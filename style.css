@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-main {
-    display: flex;
-}
-
 .draw-area > div {
     background: #eee;
     padding: 0.5em;
@@ -21,5 +17,5 @@ main {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-
+    gap: 1px;
 }
