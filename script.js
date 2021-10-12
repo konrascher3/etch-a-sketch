@@ -13,6 +13,7 @@ slider.oninput = function() {
 
 const drawArea = document.querySelector('.draw-area');
 slider.onchange = function() {
+    // TODO: Move code out of .onChange!
     while (drawArea.lastElementChild) {
         drawArea.removeChild(drawArea.lastElementChild);
     };
