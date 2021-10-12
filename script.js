@@ -1,3 +1,11 @@
+// grid-size slider
+const slider = document.getElementById('grid-size-slider');
+const sliderValue = document.getElementById('slider-value');
+sliderValue.innerHTML = slider.value;
+slider.oninput = function() {
+    sliderValue.innerHTML = this.value;
+}
+
 // create 16x16 grid
 const drawArea = document.querySelector('.draw-area');
 
@@ -9,7 +17,7 @@ for (let i = 0; i < 256; i++) {
     drawArea.appendChild(pixel);
 }
 
-// eventListener for mouse down and moving
+// only draws if mouse is held down and moving
 let mouseIsDown = false;
 const pixels = document.querySelectorAll('#pixel');
 
@@ -22,23 +30,6 @@ for (let i = 0; i < pixels.length; i++) {
         }
     })
 }   
-// pixels.forEach((pixel) => {
-//     pixel.addEventListener('mousedown', (event) => {
-//         console.log(event.target.textContent);
-//         // drawBlack(event.target);
-//     }), {mouseIsDown=true};
-//     pixel.addEventListener('mouseup', (event) => {
-//         console.log(event.target.textContent), {mouseIsDown=true};
-//         // drawBlack(event.target);
-//     });
-//     pixel.addEventListener('mousemove', (event) => {
-//         if(mouseIsDown) {
-//             console.log(event.target.textContent);
-//             drawBlack(event.target);
-//         }
-
-//     });
-// })
 
 // eventListener for btnClear
 const btnClear = document.querySelector('.btn-clear')
