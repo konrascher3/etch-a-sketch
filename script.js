@@ -9,6 +9,7 @@ slider.oninput = function() {
 // create grid based on slider
 // TODO: Adjust CSS grid with slider value
 // TODO: Display default 16x16 grid when initializing page
+// TODO: Improve speed; search for other methods than onChange???
 
 const drawArea = document.querySelector('.draw-area');
 slider.onchange = function() {
