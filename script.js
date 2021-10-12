@@ -6,15 +6,20 @@ slider.oninput = function() {
     sliderValue.innerHTML = this.value;
 }
 
-// create 16x16 grid
+// create grid based on slider
+// TODO: Adjust CSS grid with slider value
 const drawArea = document.querySelector('.draw-area');
-
-for (let i = 0; i < 256; i++) {
-    const pixel = document.createElement('div');
-    pixel.classList.add(`pixel${i}`);
-    pixel.setAttribute('id', 'pixel');
-    pixel.textContent = `${i}`;
-    drawArea.appendChild(pixel);
+slider.onchange = function() {
+    while (drawArea.lastElementChild) {
+        drawArea.removeChild(drawArea.lastElementChild);
+    };
+    for (let i = 0; i < (slider.value*slider.value); i++) {
+        const pixel = document.createElement('div');
+        pixel.classList.add(`pixel${i}`);
+        pixel.setAttribute('id', 'pixel');
+        pixel.textContent = `${i}`;
+        drawArea.appendChild(pixel);
+    }    
 }
 
 // only draws if mouse is held down and moving
