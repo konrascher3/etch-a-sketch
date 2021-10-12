@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+}
+
+.draw-area > div {
+    background: #eee;
+    padding: 0.5em;
+}
+
+.draw-area > div:nth-child(odd) {
+    background: #ddd;
+}
+
+.draw-area {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+
+}
