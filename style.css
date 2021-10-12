@@ -5,17 +5,25 @@
 }
 
 .draw-area > div {
-    background: #eee;
+    background: #ddd;
     padding: 0.5em;
 }
 
-.draw-area > div:nth-child(odd) {
+/* .draw-area > div:nth-child(odd) {
     background: #ddd;
-}
+} */
 
 .draw-area {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
     gap: 1px;
+}
+
+div:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
 }
