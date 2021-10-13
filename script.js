@@ -8,15 +8,18 @@ slider.oninput = function() {
 
 // create grid based on slider
 // TODO: Adjust CSS grid with slider value
-// TODO: Display default 16x16 grid when initializing page
-// TODO: Improve speed; search for other methods than onChange???
 
 const drawArea = document.querySelector('.draw-area');
 slider.onchange = function() {
-    // TODO: Move code out of .onChange!
     while (drawArea.lastElementChild) {
         drawArea.removeChild(drawArea.lastElementChild);
     };
+    grid();
+    draw();
+}
+
+// Create-grid function
+function grid() {
     for (let i = 0; i < (slider.value*slider.value); i++) {
         const pixel = document.createElement('div');
         pixel.classList.add(`pixel${i}`);
@@ -24,37 +27,48 @@ slider.onchange = function() {
         pixel.textContent = `${i}`;
         drawArea.appendChild(pixel);
     };
-    
-    // only draws if mouse is held down and moving
-    let mouseIsDown = false;
-    const pixels = document.querySelectorAll('#pixel');
+}
 
+// Add event-listener to created grid
+function addPixelEvent() {
+    const pixels = document.querySelectorAll('#pixel');
+    // console.log(pixels.length);
+    return pixels
+}
+
+// only draws if mouse is held down and moving
+function draw() {
+    const pixels = addPixelEvent();
+    let mouseIsDown = false;
     for (let i = 0; i < pixels.length; i++) {
-        pixels[i].addEventListener('mousedown', function(){mouseIsDown=true})
+        pixels[i].addEventListener('mousedown', function() {mouseIsDown=true})
         pixels[i].addEventListener('mouseup', function(){mouseIsDown=false})
         pixels[i].addEventListener('mousemove', function(event){
             if(mouseIsDown){
+                // TODO: Add different draw-functions (b/w; grey-scale; rgb)
                 drawBlack(event.target);
             }
         });
-
-    // eventListener for btnClear
-    const btnClear = document.querySelector('.btn-clear')
-    btnClear.addEventListener('click', () => {
-        clearGrid();
-    })
-
-    // function for drawing black
-    function drawBlack(event) {
-        event.style.backgroundColor = 'black';
     }
-
-    // function to reset grid (clear grid)
-    function clearGrid() {
-        pixels.forEach((pixel) => {
-            pixel.style.backgroundColor = '#ddd';
-        })
-    }
-}   
 }
 
+// function to reset grid (clear grid)
+function clearGrid() {
+    addPixelEvent().forEach((pixel) => {
+        pixel.style.backgroundColor = '#ddd';
+    })
+}
+
+// function for drawing black
+function drawBlack(event) {
+    event.style.backgroundColor = 'black';
+}
+
+// eventListener for btnClear
+const btnClear = document.querySelector('.btn-clear')
+btnClear.addEventListener('click', () => {
+    clearGrid();
+})
+
+grid();
+draw();
