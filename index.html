@@ -10,8 +10,11 @@
         <title>Etch-a-sketch</title>
         <meta name="description" content="Etch-a-sketch; Fun for all ages!">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/style.css">
-        <script src="/script.js" defer></script>
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+        <script src="/static/script.js" defer></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -19,14 +22,39 @@
         <![endif]-->
         
         <main>
-            <button class="btn-clear">Clear grid</button>
-            <div>
-                <input value="16" type="range" min="2" max="100" class="slider" id="grid-size-slider">
-                <span>Grid size</span>:
-                    <span id="slider-value">1</span>
-                </span>
+            
+            <div class="header">
+                
+                
             </div>
-            <div class="draw-area"></div>
+            <div class="toy-case">
+                <span class="logo">Etch A Sketch v2</span>
+                <div class="wrapper">
+                    <div class="draw-area grid-size"></div>
+                </div>
+                <div class="controls">
+                    <div class="color-menu">
+                        <button class="color-btn" id='classic' value='classic'>Classic</button>
+                        <button class="color-btn" id='grayscale' value='grayscale'>Grayscale</button>
+                        <button class="color-btn" id='rgb' value='rgb'>RGB</button>
+                        <button class="color-btn" id='custom' value='custom'>Custom</button>
+                        <button class="btn-clear">Clear grid</button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="slider">
+                        <input value="16" type="range" min="2" max="100" class="slider" id="grid-size-slider">
+                    </div>
+                    <div class="slider-output">
+                        <span id="slider-value">1</span>
+                        <span>x</span>
+                        <span id="slider-value-2">1</span>
+                    </div>
+                 
+                   
+                </div>  
+            </div>
         </main>
         
     </body>
