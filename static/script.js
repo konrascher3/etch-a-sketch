@@ -31,7 +31,7 @@ slider.onchange = function() {
 // Create-grid function
 function grid() {
     gridSize();
-    for (let i = 0; i < (slider.value*slider.value); i++) {
+    for (let i = 0; i < (slider.value * slider.value); i++) {
         const pixel = document.createElement('div');
         pixel.classList.add(`pixel${i}`);
         pixel.setAttribute('id', 'pixel');
@@ -39,7 +39,7 @@ function grid() {
         drawArea.appendChild(pixel);
         pixel.style.backgroundColor = '#ddd';
     };
-        
+
 }
 
 // Add event-listener to created grid
@@ -63,21 +63,21 @@ function draw() {
     function drawGray(event) {
         bg = event.style.backgroundColor;
 
-        vals = bg.substring(bg.indexOf('(') +1, bg.length -1).split(', ');
+        vals = bg.substring(bg.indexOf('(') + 1, bg.length - 1).split(', ');
         r = vals[0]
         g = vals[1]
         b = vals[2]
-        
+
         rNew = Math.round(r - 1)
         gNew = Math.round(g - 1)
         bNew = Math.round(b - 1)
 
         event.style.backgroundColor = `rgb(${rNew}, ${gNew}, ${bNew})`
-    }   
+    }
 
     // function for drawing rgb
     function drawRgb(event) {
-        randomColor = Math.floor(Math.random()*16777215).toString(16);
+        randomColor = Math.floor(Math.random() * 16777215).toString(16);
         event.style.backgroundColor = '#' + randomColor;
     }
 
@@ -85,39 +85,52 @@ function draw() {
     cstmBtn = document.querySelector('#custom');
     colorPicker = document.querySelector('#color-picker');
     colorPicker.addEventListener('change', function(event) {
-        console.log(event.target.value);
-        cstmBtn.style.backgroundColor = event.target.value;
-    })
-    // colorPicker.addEventListener('input', (event) => (
-    //     console.log(event.target.value)
-    // ));
+            console.log(event.target.value);
+            cstmBtn.style.backgroundColor = event.target.value;
+        })
+        // colorPicker.addEventListener('input', (event) => (
+        //     console.log(event.target.value)
+        // ));
     cstmBtn.style.backgroundColor = colorPicker.value;
 
-    
+
     console.log(colorPicker)
 
     function drawCustom(event) {
         console.log(colorPicker.value)
         event.style.backgroundColor = colorPicker.value;
     }
-    
+
     const pixels = addPixelEvent();
     let mouseIsDown = false;
     let colorType = "classic";
     const colorButtons = document.querySelectorAll('.color-btn');
-    
+
+
+    // TODO: Add toggle-state tto buttons (only classic, grey, rgb!)
     colorButtons.forEach((button) => {
+
+        button.addEventListener('transitionend', removeTransition);
+
         button.addEventListener('click', (event) => {
-                colorType = event.target.value;
+            button.classList.add('pressed');
+            colorType = event.target.value;
+        
         });
+
+        
     });
-    
+
+    function removeTransition(event) {
+        if (event.propertyName === 'transform') return; // do nothing if not transformed
+        this.classList.remove('pressed'); // Remove playing CSS class from button after transition finished
+    }
 
     for (let i = 0; i < pixels.length; i++) {
-        pixels[i].addEventListener('mousedown', function() {mouseIsDown=true})
-        pixels[i].addEventListener('mouseup', function(){mouseIsDown=false})
-        pixels[i].addEventListener('mousemove', function(event){
-            if(mouseIsDown){
+        pixels[i].addEventListener('mousedown', function() { mouseIsDown = true })
+        pixels[i].addEventListener('mouseup', function() { mouseIsDown = false })
+        pixels[i].addEventListener('mousemove', function(event) {
+            if (mouseIsDown) {
                 // TODO: Add different draw-functions (b/w; grayscale; rgb)
                 if (colorType === 'classic') {
                     drawBlack(event.target);

@@ -76,6 +76,10 @@ button:hover {
     cursor: pointer;
 }
 
+.pressed {
+    background: red !important;
+}
+
 #custom {
     justify-content: center;
     align-items: center;
