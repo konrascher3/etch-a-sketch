@@ -15,21 +15,20 @@
     flex-direction: column;
     border: 5px solid red;
     background: rgb(255, 255, 255);
-    background: linear-gradient(183deg, rgba(255,157,157,1) 0%, rgba(254,38,38,1) 36%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(183deg, rgba(255, 157, 157, 1) 0%, rgba(254, 38, 38, 1) 36%, rgba(255, 0, 0, 1) 100%);
     border-radius: 10%;
     filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
 }
+
 .logo {
     justify-content: center;
     font-weight: bold;
     font-size: 3rem;
-    color:  #f1cc66;
+    color: #f1cc66;
     text-shadow: 1px 1px 4px #000;
-    
 }
 
 .wrapper {
-  
     align-items: center;
     justify-content: center;
     padding: 2vh;
@@ -40,14 +39,14 @@
     z-index: 1001;
 }
 
-.draw-area > div {
+.draw-area>div {
     background: #ddd;
-
     /* padding: 0.1em; */
 }
 
+
 /* .draw-area > div:nth-child(odd) {
-    background: #ddd;
+background: #ddd;
 } */
 
 .draw-area {
@@ -61,9 +60,8 @@
     border: 3px solid grey;
     background-color: rgba(187, 187, 187, 0.904);
     padding: 1em;
-    border-radius:15px;
+    border-radius: 15px;
 }
-
 
 .grid-size {
     grid-template-columns: repeat(16, 1fr);
@@ -88,54 +86,37 @@ button:hover {
 
 #custom {
     color: white;
-
 }
 
-#custom:hover{
-    background:     linear-gradient(
-       to right, 
-       #E7484F,
-       #E7484F 16.65%,
-       #F68B1D 16.65%,
-       #F68B1D 33.3%,
-       #FCED00 33.3%,
-       #FCED00 49.95%,
-       #009E4F 49.95%,
-       #009E4F 66.6%,
-       #00AAC3 66.6%,
-       #00AAC3 83.25%,
-       #732982 83.25%,
-       #732982 100%,
-       #E7484F 100%
-     );
-   animation:slidebg 10s linear infinite;
- }
- 
- 
- @keyframes slidebg {
-   to {
-     background-position:20vw;
-   }
- }
- 
- .follow{
-   margin-top: 40px;
- }
- 
- .follow a{
-   color: black;
-   padding: 8px 16px;
-   text-decoration: none;
- }
+#custom:hover {
+    background: linear-gradient(to right, #E7484F, #E7484F 16.65%, #F68B1D 16.65%, #F68B1D 33.3%, #FCED00 33.3%, #FCED00 49.95%, #009E4F 49.95%, #009E4F 66.6%, #00AAC3 66.6%, #00AAC3 83.25%, #732982 83.25%, #732982 100%, #E7484F 100%);
+    animation: slidebg 10s linear infinite;
+}
+
+@keyframes slidebg {
+    to {
+        background-position: 20vw;
+    }
+}
+
+.follow {
+    margin-top: 40px;
+}
+
+.follow a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
 
 input[type="color"] {
     height: 3.5vh;
     width: 5vh;
     display: flex;
-	opacity: 0;
-    position:absolute;
-	/* width: 32px;  */
-	border: none;
+    opacity: 0;
+    position: absolute;
+    /* width: 32px;  */
+    border: none;
 }
 
 input:hover {
@@ -145,7 +126,7 @@ input:hover {
 .color-menu {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem; 
+    gap: 0.5rem;
 }
 
 .color-menu button {
@@ -154,8 +135,10 @@ input:hover {
     border: 1px solid black;
     border-radius: 10px;
 }
+
 .color-btn:hover {
-    background-color: #f1cc66;;
+    background-color: #f1cc66;
+    ;
 }
 
 .btn-clear:hover {
@@ -181,14 +164,212 @@ input:hover {
     justify-content: center;
 }
 
-.slider::-webkit-slider-thumb {
+
+/* Slider formatting */
+
+.slider {
+    margin: 7.8px 0;
+    background-color: transparent;
     -webkit-appearance: none;
-    border: 1.5px solid #000000;
-    height: 2vh;
-    width: 2vh;
-    border-radius: 15px;
-    background: #ff0000;
+}
+
+.slider:focus {
+    outline: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+    background: #b30000;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
     cursor: pointer;
-    /* margin-top: -14px; You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+.slider::-webkit-slider-thumb {
+    margin-top: -8px;
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.slider:focus::-webkit-slider-runnable-track {
+    background: #cc0000;
+}
+
+.slider::-moz-range-track {
+    background: #b30000;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.slider::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 13.4px 0;
+    color: transparent;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+.slider::-ms-fill-lower {
+    background: #9a0000;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+.slider::-ms-fill-upper {
+    background: #b30000;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+.slider::-ms-thumb {
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+
+.slider:focus::-ms-fill-lower {
+    background: #b30000;
+}
+
+.slider:focus::-ms-fill-upper {
+    background: #cc0000;
+}
+
+@supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    .slider {
+        margin: 0;
+        /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+}
+
+.slider {
+    width: 70%;
+    margin: 7.8px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+
+.slider:focus {
+    outline: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+    background: #990a0a;
+    border: 0.2px solid #010101;
+    border-radius: 15px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    margin-top: -8px;
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.slider:focus::-webkit-slider-runnable-track {
+    background: #cc0000;
+}
+
+.slider::-moz-range-track {
+    background: #b30000;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.slider::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 13.4px 0;
+    color: transparent;
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+}
+
+.slider::-ms-fill-lower {
+    background: #9a0000;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+.slider::-ms-fill-upper {
+    background: #b30000;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+.slider::-ms-thumb {
+    width: 23px;
+    height: 24px;
+    background: #ff0000;
+    border: 1.7px solid #000000;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+
+.slider:focus::-ms-fill-lower {
+    background: #b30000;
+}
+
+.slider:focus::-ms-fill-upper {
+    background: #cc0000;
+}
+
+
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+
+@supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    .slider {
+        margin: 0;
+        /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
 }
