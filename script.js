@@ -109,7 +109,13 @@ function draw() {
     // TODO: Add active-state to buttons (only classic, grey, rgb!)
 
         colorButtons.forEach((button) => {
-            button.addEventListener('click', () => {
+
+
+            button.addEventListener('click', (event) => {
+
+                console.log(event.target.value);
+                colorType = event.target.value;
+
                 if (button.classList.contains('active')) {
                 } else {
                     // remove active class from all buttons; then
@@ -119,14 +125,8 @@ function draw() {
                     // add active class to current button
                     button.classList.add('active');
                 }
-            })
+            }); 
         })
-
-
-    function removeTransition(event) {
-        if (event.propertyName === 'transform') return; // do nothing if not transformed
-        this.classList.remove('pressed'); // Remove playing CSS class from button after transition finished
-    }
 
     for (let i = 0; i < pixels.length; i++) {
         pixels[i].addEventListener('mousedown', function() { mouseIsDown = true })
