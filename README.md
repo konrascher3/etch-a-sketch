@@ -2,4 +2,4 @@
 
 The famous Etch-a-sketch re-created with HTML, CSS and JS. 
 
-* [Preview link]()
+* [Preview link](https://konrascher3.github.io/etch-a-sketch/)
