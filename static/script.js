@@ -99,27 +99,29 @@ function draw() {
     function drawCustom(event) {
         console.log(colorPicker.value)
         event.style.backgroundColor = colorPicker.value;
-    }
+    };
 
     const pixels = addPixelEvent();
     let mouseIsDown = false;
     let colorType = "classic";
     const colorButtons = document.querySelectorAll('.color-btn');
 
+    // TODO: Add active-state to buttons (only classic, grey, rgb!)
 
-    // TODO: Add toggle-state tto buttons (only classic, grey, rgb!)
-    colorButtons.forEach((button) => {
+        colorButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('active')) {
+                } else {
+                    // remove active class from all buttons; then
+                    colorButtons.forEach((button) => {
+                        button.classList.remove('active');
+                    })
+                    // add active class to current button
+                    button.classList.add('active');
+                }
+            })
+        })
 
-        button.addEventListener('transitionend', removeTransition);
-
-        button.addEventListener('click', (event) => {
-            button.classList.add('pressed');
-            colorType = event.target.value;
-        
-        });
-
-        
-    });
 
     function removeTransition(event) {
         if (event.propertyName === 'transform') return; // do nothing if not transformed

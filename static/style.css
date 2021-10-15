@@ -72,6 +72,14 @@
     cursor: pointer;
 }
 
+.active {   
+    background: #e5e5e5;
+    outline: none;
+    -webkit-box-shadow: inset 0px 0px 5px #000000;
+       -moz-box-shadow: inset 0px 0px 5px #000000;
+            box-shadow: inset 0px 0px 5px #000000;
+}
+
 button:hover {
     cursor: pointer;
 }
