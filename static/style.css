@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Courgette', cursive;
-    /* border: 1px solid red; */
+    border: 1px solid blue;
 }
 
 .toy-case {
     margin: 5em;
     padding: 2em;
     display: flex;
-    max-width: 70%;
+    width: 40%;
     align-items: center;
     flex-direction: column;
     border: 5px solid red;
@@ -76,6 +76,76 @@
 
 button:hover {
     cursor: pointer;
+}
+
+#custom {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 3vh;
+    /* width: 5rem; */
+}
+
+#custom {
+    color: white;
+
+}
+
+#custom:hover{
+    background:     linear-gradient(
+       to right, 
+       #E7484F,
+       #E7484F 16.65%,
+       #F68B1D 16.65%,
+       #F68B1D 33.3%,
+       #FCED00 33.3%,
+       #FCED00 49.95%,
+       #009E4F 49.95%,
+       #009E4F 66.6%,
+       #00AAC3 66.6%,
+       #00AAC3 83.25%,
+       #732982 83.25%,
+       #732982 100%,
+       #E7484F 100%
+     );
+   animation:slidebg 10s linear infinite;
+ }
+ 
+ 
+ @keyframes slidebg {
+   to {
+     background-position:20vw;
+   }
+ }
+ 
+ .follow{
+   margin-top: 40px;
+ }
+ 
+ .follow a{
+   color: black;
+   padding: 8px 16px;
+   text-decoration: none;
+ }
+
+input[type="color"] {
+    height: 3.5vh;
+    width: 5vh;
+    display: flex;
+	opacity: 0;
+    position:absolute;
+	/* width: 32px;  */
+	border: none;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+.color-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem; 
 }
 
 .color-menu button {

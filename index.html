@@ -35,18 +35,20 @@
                 </div>
                 <div class="controls">
                     <div class="color-menu">
-                        <button class="color-btn" id='classic' value='classic'>Classic</button>
-                        <button class="color-btn" id='grayscale' value='grayscale'>Grayscale</button>
-                        <button class="color-btn" id='rgb' value='rgb'>RGB</button>
-                        <button class="color-btn" id='custom' value='custom'>Custom</button>
-                        <div class="color-picker">Custom</div>
-                        <button class="btn-clear">Clear grid</button>
+                        <button title='Black color' class="color-btn" id='classic' value='classic'>Classic</button>
+                        <button title='Apply Shading' class="color-btn" id='grayscale' value='grayscale'>Grayscale</button>
+                        <button title='Random Color' class="color-btn" id='rgb' value='rgb'>RGB</button>
+                        <button title='Pick A Custom Color' class="color-btn" id='custom' value='custom'>
+                            <span>Custom</span>
+                            <input type="color" id='color-picker'>
+                        </button>
+                        <button title='Start Over' class="btn-clear">Clear grid</button>
                         </div>
                         
                     </div>
 
                     <div class="slider">
-                        <input value="16" type="range" min="2" max="100" class="slider" id="grid-size-slider">
+                        <input value="16" title='Resize The Grid' type="range" min="2" max="100" class="slider" id="grid-size-slider">
                     </div>
                     <div class="slider-output">
                         <span id="slider-value">1</span>

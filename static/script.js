@@ -1,90 +1,5 @@
 const drawArea = document.querySelector('.draw-area');
 
-// PichR
-
-// https://www.youtube.com/watch?v=FX1xb1cim7Ehttps://www.youtube.com/watch?v=FX1xb1cim7E
-
-function picker () {}
-const pickr = Pickr.create({
-    el: '.color-picker',
-    theme: 'nano', // or 'monolith', or 'nano'
-
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
-
-    components: {
-
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
-
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            hsla: false,
-            hsva: false,
-            cmyk: false,
-            input: true,
-            clear: false,
-            save: false
-        }
-    }
-});
-
-pickr.on('init', instance => {
-    console.log('Event: "init"', instance);
-}).on('hide', instance => {
-    console.log('Event: "hide"', instance);
-}).on('show', (color, instance) => {
-    console.log('Event: "show"', color, instance);
-}).on('save', (color, instance) => {
-    console.log('Event: "save"', color, instance);
-}).on('clear', instance => {
-    console.log('Event: "clear"', instance);
-}).on('change', (color, source, instance) => {
-    console.log('Event: "change"', color, source, instance);
-}).on('changestop', (source, instance) => {
-    console.log('Event: "changestop"', source, instance);
-}).on('cancel', instance => {
-    console.log('Event: "cancel"', instance);
-}).on('swatchselect', (color, instance) => {
-    console.log('Event: "swatchselect"', color, instance);
-});pickr.on('init', instance => {
-    console.log('Event: "init"', instance);
-}).on('hide', instance => {
-    console.log('Event: "hide"', instance);
-}).on('show', (color, instance) => {
-    console.log('Event: "show"', color, instance);
-}).on('save', (color, instance) => {
-    console.log('Event: "save"', color, instance);
-}).on('clear', instance => {
-    console.log('Event: "clear"', instance);
-}).on('change', (color, source, instance) => {
-    console.log('Event: "change"', color, source, instance);
-}).on('changestop', (source, instance) => {
-    console.log('Event: "changestop"', source, instance);
-}).on('cancel', instance => {
-    console.log('Event: "cancel"', instance);
-}).on('swatchselect', (color, instance) => {
-    console.log('Event: "swatchselect"', color, instance);
-});
-
 // grid-size slider
 const slider = document.getElementById('grid-size-slider');
 const sliderValue = document.getElementById('slider-value');
@@ -101,7 +16,7 @@ slider.oninput = function() {
 function gridSize() {
     const gridSize = document.querySelector('.grid-size');
     gridSize.setAttribute('style', `grid-template-columns: repeat(${slider.value}, 1fr); grid-template-rows: repeat(${slider.value}, 1fr)`, );
-    // // gridSize.setAttribute('style', `grid-template-rows: repeat(${slider.value}, 1fr)`); repeat(auto-fit, minmax(100px, 1fr));
+    // gridSize.setAttribute('style', `grid-template-rows: repeat(${slider.value}, 1fr)`); repeat(auto-fit, minmax(100px, 1fr));
 }
 
 // When slider changes, create new grid based on slider value
@@ -137,16 +52,7 @@ function addPixelEvent() {
 // only draws if mouse is held down and moving
 function draw() {
 
-    // color functions 
-
-    const colorMode = document.querySelectorAll('.color-btn');
-    console.log(colorMode)
-    for (let i = 0; i < colorMode.length; i++) {
-    colorMode[i].addEventListener('click', function(event) {
-        colorType = event.target.value;
-        console.log(colorType);
-        })
-    }
+    // color functios
 
     // function for drawing black
     function drawBlack(event) {
@@ -176,15 +82,37 @@ function draw() {
     }
 
     // function for drawing custom color
+    cstmBtn = document.querySelector('#custom');
+    colorPicker = document.querySelector('#color-picker');
+    colorPicker.addEventListener('change', function(event) {
+        console.log(event.target.value);
+        cstmBtn.style.backgroundColor = event.target.value;
+    })
+    // colorPicker.addEventListener('input', (event) => (
+    //     console.log(event.target.value)
+    // ));
+    cstmBtn.style.backgroundColor = colorPicker.value;
+
+    
+    console.log(colorPicker)
 
     function drawCustom(event) {
-        event.style.backgroundColor = input.ariaValueMax;
-        colorCode.innerHTML = input.ariaValueMax;
+        console.log(colorPicker.value)
+        event.style.backgroundColor = colorPicker.value;
     }
     
     const pixels = addPixelEvent();
     let mouseIsDown = false;
     let colorType = "classic";
+    const colorButtons = document.querySelectorAll('.color-btn');
+    
+    colorButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+                colorType = event.target.value;
+        });
+    });
+    
+
     for (let i = 0; i < pixels.length; i++) {
         pixels[i].addEventListener('mousedown', function() {mouseIsDown=true})
         pixels[i].addEventListener('mouseup', function(){mouseIsDown=false})
@@ -197,10 +125,9 @@ function draw() {
                     drawGray(event.target);
                 } else if (colorType === 'rgb') {
                     drawRgb(event.target);
-                } else if (colorType === 'custom') {
+                } else if (colorType.includes('#')) {
                     drawCustom(event.target);
                 }
-
             }
         });
     }
